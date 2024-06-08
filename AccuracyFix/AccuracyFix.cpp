@@ -108,7 +108,7 @@ void CAccuracyFix::TraceLine(const float* vStart, const float* vEnd, int fNoMons
 									DistanceLimit = this->m_af_distance_all->value;
 								}
 
-								if (DistanceLimit > 0.0f && Player->edict()->v.flags & FL_ONGROUND)
+								if (DistanceLimit > 0.0f && Player->edict()->v.flags & FL_ONGROUND && !(Player->edict()->v.movetype & MOVETYPE_WALK))
 								{
 									auto trResult = gAccuracyUtil.GetUserAiming(pentToSkip, DistanceLimit);
 
