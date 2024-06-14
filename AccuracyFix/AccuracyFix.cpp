@@ -110,7 +110,7 @@ void CAccuracyFix::TraceLine(const float* vStart, const float* vEnd, int fNoMons
 
 								if (DistanceLimit > 0.0f && Player->edict()->v.flags & FL_ONGROUND)
 								{
-									if(Player->m_pActiveItem->m_iId() == WEAPON_DEAGLE && (Player->edict()->v.movetype & MOVETYPE_WALK))
+									if(Player->m_pActiveItem->m_iId == WEAPON_DEAGLE && (Player->edict()->v.movetype & MOVETYPE_WALK))
 										return;
 									
 									auto trResult = gAccuracyUtil.GetUserAiming(pentToSkip, DistanceLimit);
