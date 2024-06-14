@@ -128,7 +128,7 @@ void CAccuracyFix::TraceLine(const float* vStart, const float* vEnd, int fNoMons
 												fwdVelocity = this->m_af_accuracy_all->value;
 											}
 
-											g_engfuncs.pfnMakeVectors(pentToSkip->v.punchangle);
+											g_engfuncs.pfnMakeVectors(pentToSkip->v.v_angle);
 
 											auto vEndRes = (Vector)vStart + gpGlobals->v_forward * fwdVelocity;
 
