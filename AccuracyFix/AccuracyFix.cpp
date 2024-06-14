@@ -108,8 +108,11 @@ void CAccuracyFix::TraceLine(const float* vStart, const float* vEnd, int fNoMons
 									DistanceLimit = this->m_af_distance_all->value;
 								}
 
-								if (DistanceLimit > 0.0f && Player->edict()->v.flags & FL_ONGROUND && !(Player->edict()->v.movetype & MOVETYPE_WALK))
+								if (DistanceLimit > 0.0f && Player->edict()->v.flags & FL_ONGROUND)
 								{
+									if(Player->m_pActiveItem->m_iId() == WEAPON_DEAGLE && (Player->edict()->v.movetype & MOVETYPE_WALK))
+										return;
+									
 									auto trResult = gAccuracyUtil.GetUserAiming(pentToSkip, DistanceLimit);
 
 									if (!FNullEnt(trResult.pHit))
@@ -125,7 +128,7 @@ void CAccuracyFix::TraceLine(const float* vStart, const float* vEnd, int fNoMons
 												fwdVelocity = this->m_af_accuracy_all->value;
 											}
 
-											g_engfuncs.pfnMakeVectors(pentToSkip->v.v_angle);
+											g_engfuncs.pfnMakeVectors(pentToSkip->v.punchangle);
 
 											auto vEndRes = (Vector)vStart + gpGlobals->v_forward * fwdVelocity;
 
