@@ -74,7 +74,7 @@ void CAccuracyFix::TraceLine(const float* vStart, const float* vEnd, int fNoMons
 
 	auto EntityIndex = g_engfuncs.pfnIndexOfEdict(pentToSkip);
 
-	if (!(EntityIndex > 0 && EntityIndex <= gpGlobals->maxClients)
+	if (!(EntityIndex > 0 && EntityIndex <= gpGlobals->maxClients))
 		return;
 
 	auto Player = UTIL_PlayerByIndexSafe(EntityIndex);
@@ -100,12 +100,12 @@ void CAccuracyFix::TraceLine(const float* vStart, const float* vEnd, int fNoMons
 		DistanceLimit = this->m_af_distance_all->value;
 	}
 
-	if (!(DistanceLimit > 0.0f && Player->edict()->v.flags & FL_ONGROUND)
+	if (!(DistanceLimit > 0.0f && Player->edict()->v.flags & FL_ONGROUND))
 		return;
 
 	auto trResult = gAccuracyUtil.GetUserAiming(pentToSkip, DistanceLimit);
 
-	if (FNullEnt(trResult.pHit)))
+	if (FNullEnt(trResult.pHit))
 		return;
 
 	auto TargetIndex = ENTINDEX(trResult.pHit);
